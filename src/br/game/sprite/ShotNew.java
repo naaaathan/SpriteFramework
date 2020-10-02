@@ -4,12 +4,12 @@ import spriteframework.sprite.Sprite;
 
 import javax.swing.ImageIcon;
 
-public class Shot extends Sprite {
+public class ShotNew extends Sprite {
 
-    public Shot() {
+    public ShotNew() {
     }
 
-    public Shot(int x, int y) {
+    public ShotNew(int x, int y) {
         initShot(x, y);
     }
 

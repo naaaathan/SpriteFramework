@@ -100,4 +100,8 @@ public class Sprite implements SpriteGUI {
             this.x += speedX;
         }
     }
+
+    public void moveX(int x) {
+        this.x += x;
+    }
 }

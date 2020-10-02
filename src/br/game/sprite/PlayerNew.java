@@ -6,11 +6,11 @@ import spriteframework.sprite.Sprite;
 import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
 
-public class Player extends Sprite {
+public class PlayerNew extends Sprite {
 
     private int width;
 
-    public Player() {
+    public PlayerNew() {
 
         initPlayer();
     }
