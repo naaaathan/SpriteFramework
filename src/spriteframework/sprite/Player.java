@@ -1,7 +1,5 @@
 package spriteframework.sprite;
 
-import com.zetcode.CommonsNew;
-
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 
@@ -38,9 +36,9 @@ public class Player extends Sprite {
             x = 2;
         }
 
-        if (x >= CommonsNew.BOARD_WIDTH - 2 * width) {
+        if (x >= Commons.BOARD_WIDTH - 2 * width) {
 
-            x = CommonsNew.BOARD_WIDTH - 2 * width;
+            x = Commons.BOARD_WIDTH - 2 * width;
         }
     }
 

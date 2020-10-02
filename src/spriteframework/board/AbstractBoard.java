@@ -3,8 +3,7 @@ package spriteframework.board;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import com.zetcode.CommonsNew;
-import com.zetcode.sprite.AlienNew;
+import com.zetcode.sprite.Alien;
 import com.zetcode.sprite.Shot;
 import spriteframework.sprite.BadSprite;
 import spriteframework.sprite.Commons;
@@ -31,7 +30,7 @@ public abstract class AbstractBoard extends JPanel {
     protected Dimension d;
 
     //define sprites
-    private List<AlienNew> alienNews;
+    private List<Alien> alien;
     protected LinkedList<Player> players = new LinkedList<Player>();
 
     protected LinkedList<BadSprite> badSprites;
@@ -72,7 +71,7 @@ public abstract class AbstractBoard extends JPanel {
         d = new Dimension(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
         setBackground(Color.black);
 
-        timer = new Timer(CommonsNew.DELAY, new GameCycle());
+        timer = new Timer(Commons.DELAY, new GameCycle());
         timer.start();
 
         gameInit();
@@ -154,8 +153,8 @@ public abstract class AbstractBoard extends JPanel {
 
         if (inGame) {
 
-            g.drawLine(0, CommonsNew.GROUND,
-                    CommonsNew.BOARD_WIDTH, CommonsNew.GROUND);
+            g.drawLine(0, Commons.GROUND,
+                    Commons.BOARD_WIDTH, Commons.GROUND);
 
             drawBadSprites(g);
             drawPlayers(g);
@@ -176,20 +175,20 @@ public abstract class AbstractBoard extends JPanel {
     private void gameOver(Graphics g) {
 
         g.setColor(Color.black);
-        g.fillRect(0, 0, CommonsNew.BOARD_WIDTH, CommonsNew.BOARD_HEIGHT);
+        g.fillRect(0, 0, Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
 
         g.setColor(new Color(0, 32, 48));
-        g.fillRect(50, CommonsNew.BOARD_WIDTH / 2 - 30, CommonsNew.BOARD_WIDTH - 100, 50);
+        g.fillRect(50, Commons.BOARD_WIDTH / 2 - 30, Commons.BOARD_WIDTH - 100, 50);
         g.setColor(Color.white);
-        g.drawRect(50, CommonsNew.BOARD_WIDTH / 2 - 30, CommonsNew.BOARD_WIDTH - 100, 50);
+        g.drawRect(50, Commons.BOARD_WIDTH / 2 - 30, Commons.BOARD_WIDTH - 100, 50);
 
         Font small = new Font("Helvetica", Font.BOLD, 14);
         FontMetrics fontMetrics = this.getFontMetrics(small);
 
         g.setColor(Color.white);
         g.setFont(small);
-        g.drawString(message, (CommonsNew.BOARD_WIDTH - fontMetrics.stringWidth(message)) / 2,
-                CommonsNew.BOARD_WIDTH / 2);
+        g.drawString(message, (Commons.BOARD_WIDTH - fontMetrics.stringWidth(message)) / 2,
+                Commons.BOARD_WIDTH / 2);
     }
 
 

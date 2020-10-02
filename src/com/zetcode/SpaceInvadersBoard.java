@@ -5,6 +5,7 @@ import com.zetcode.sprite.BomberSprite;
 import com.zetcode.sprite.Shot;
 import spriteframework.board.AbstractBoard;
 import spriteframework.sprite.BadSprite;
+import spriteframework.sprite.Commons;
 import spriteframework.sprite.Player;
 
 import javax.swing.*;
