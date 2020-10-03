@@ -1,4 +1,4 @@
-package spriteframework.sprite;
+package spriteframework.sprite.command;
 
 public interface Command {
     void execute();

@@ -1,7 +1,7 @@
-package spriteframework.sprite.impl;
+package spriteframework.sprite.command.impl;
 
 import com.zetcode.sprite.Shot;
-import spriteframework.sprite.Command;
+import spriteframework.sprite.command.Command;
 
 import java.awt.event.KeyEvent;
 

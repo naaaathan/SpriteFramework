@@ -7,7 +7,7 @@ import spriteframework.board.AbstractBoard;
 import spriteframework.sprite.BadSprite;
 import spriteframework.sprite.Commons;
 import spriteframework.sprite.Player;
-import spriteframework.sprite.impl.ShotCommand;
+import spriteframework.sprite.command.impl.ShotCommand;
 
 import javax.swing.*;
 import java.awt.*;

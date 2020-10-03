@@ -1,6 +1,6 @@
-package spriteframework.sprite.impl;
+package spriteframework.sprite.command.impl;
 
-import spriteframework.sprite.Command;
+import spriteframework.sprite.command.Command;
 import spriteframework.sprite.Commons;
 import spriteframework.sprite.Direction;
 import spriteframework.sprite.Player;

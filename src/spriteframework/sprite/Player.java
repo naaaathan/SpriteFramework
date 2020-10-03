@@ -1,6 +1,7 @@
 package spriteframework.sprite;
 
-import spriteframework.sprite.impl.MoveCommand;
+import spriteframework.sprite.command.Command;
+import spriteframework.sprite.command.impl.MoveCommand;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
