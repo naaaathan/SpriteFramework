@@ -7,6 +7,7 @@ import spriteframework.board.AbstractBoard;
 import spriteframework.sprite.BadSprite;
 import spriteframework.sprite.Commons;
 import spriteframework.sprite.Player;
+import spriteframework.sprite.impl.ShotCommand;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,8 +28,6 @@ public class SpaceInvadersBoard extends AbstractBoard {
 
 
     private String explImg = "images/explosion.png";
-
-
 
 
     protected void createBadSprites() {  // create sprites
@@ -59,41 +58,23 @@ public class SpaceInvadersBoard extends AbstractBoard {
     }
 
     protected void processOtherSprites(Player player, KeyEvent e) {
+
+        /* TODO improve this */
+
         int x = player.getX();
         int y = player.getY();
-
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_SPACE) {
+        Shot shotImpl = new Shot(x, y);
+        ShotCommand shotCommand = new ShotCommand(shot, shotImpl, key);
 
-            if (inGame) {
-
-                if (!shot.isVisible()) {
-
-                    shot = new Shot(x, y);
-                }
-            }
+        if (inGame) {
+            shotCommand.execute();
         }
+
+        shot = shotCommand.getShot();
     }
 
-//    private void gameOver(Graphics g) {
-//
-//        g.setColor(Color.black);
-//        g.fillRect(0, 0, Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
-//
-//        g.setColor(new Color(0, 32, 48));
-//        g.fillRect(50, Commons.BOARD_WIDTH / 2 - 30, Commons.BOARD_WIDTH - 100, 50);
-//        g.setColor(Color.white);
-//        g.drawRect(50, Commons.BOARD_WIDTH / 2 - 30, Commons.BOARD_WIDTH - 100, 50);
-//
-//        Font small = new Font("Helvetica", Font.BOLD, 14);
-//        FontMetrics fontMetrics = this.getFontMetrics(small);
-//
-//        g.setColor(Color.white);
-//        g.setFont(small);
-//        g.drawString(message, (Commons.BOARD_WIDTH - fontMetrics.stringWidth(message)) / 2,
-//                Commons.BOARD_WIDTH / 2);
-//    }
 
     protected void update() {
 
@@ -105,7 +86,7 @@ public class SpaceInvadersBoard extends AbstractBoard {
         }
 
         // player
-        for (Player player: players)
+        for (Player player : players)
             player.act();
 
         // shot
@@ -201,15 +182,13 @@ public class SpaceInvadersBoard extends AbstractBoard {
     }
 
 
-
-
     protected void updateOtherSprites() {
         Random generator = new Random();
 
         for (BadSprite alien : badSprites) {
 
             int shot = generator.nextInt(15);
-            Bomb bomb = ((BomberSprite)alien).getBomb();
+            Bomb bomb = ((BomberSprite) alien).getBomb();
 
             if (shot == Commons.CHANCE && alien.isVisible() && bomb.isDestroyed()) {
 
