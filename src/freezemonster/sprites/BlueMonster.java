@@ -1,5 +1,7 @@
 package freezemonster.sprites;
 
+import spriteframework.util.ImageUtil;
+
 import javax.swing.*;
 
 public class BlueMonster extends MonsterSprite {
@@ -16,10 +18,10 @@ public class BlueMonster extends MonsterSprite {
 
         setGoop(new Goop(c1,c2));
 
-        String blueMonsterImg = "images/monster1.png";
+        String blueMonsterImg = "src/freezemonster/images/monster1.png";
         ImageIcon ii = new ImageIcon(blueMonsterImg);
 
-        setImage(ii.getImage());
+        setImage(ImageUtil.getScaledImage(ii.getImage(), 30, 30));
 
     }
 }
