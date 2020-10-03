@@ -2,7 +2,7 @@ package spriteframework.sprite;
 
 import java.awt.*;
 
-public class Sprite implements SpriteGUI {
+public class Sprite {
 
     private boolean visible;
     private Image image;
@@ -91,15 +91,15 @@ public class Sprite implements SpriteGUI {
         this.speedX = speedX;
     }
 
-    @Override
-    public void move(Direction direction) {
-
-        if (direction.equals(Direction.BOTTOM) || direction.equals(Direction.TOP)) {
-            this.y += speedY;
-        } else if (direction.equals(Direction.RIGHT) || direction.equals(Direction.LEFT)) {
-            this.x += speedX;
-        }
-    }
+//    @Override
+//    public void move(Direction direction) {
+//
+//        if (direction.equals(Direction.BOTTOM) || direction.equals(Direction.TOP)) {
+//            this.y += speedY;
+//        } else if (direction.equals(Direction.RIGHT) || direction.equals(Direction.LEFT)) {
+//            this.x += speedX;
+//        }
+//    }
 
     public void moveX(int x) {
         this.x += x;

@@ -1,12 +1,21 @@
 package spriteframework.sprite;
 
+import spriteframework.sprite.impl.MoveCommand;
+
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 
 public class Player extends Sprite {
 
-
     private int width;
+
+    protected Direction moveDirection = Direction.HORIZONTAL;
+
+    private Command moveCommand;
+
+    /* TODO
+        Quando estender a classe player injetar o moveCommand via construtor para desacoplar do framework detalhers do game
+    */
 
     public Player() {
         initPlayer();
@@ -16,6 +25,8 @@ public class Player extends Sprite {
 
         var playerImg = "src/images/player.png";
         var ii = new ImageIcon(playerImg);
+
+        moveCommand = new MoveCommand(this, Direction.HORIZONTAL);
 
         width = ii.getImage().getWidth(null);
         setImage(ii.getImage());
@@ -29,17 +40,7 @@ public class Player extends Sprite {
 
     public void act() {
 
-        x += getSpeedX();
-
-        if (x <= 2) {
-
-            x = 2;
-        }
-
-        if (x >= Commons.BOARD_WIDTH - 2 * width) {
-
-            x = Commons.BOARD_WIDTH - 2 * width;
-        }
+        moveCommand.execute();
     }
 
     public void keyPressed(KeyEvent e) {
@@ -70,5 +71,21 @@ public class Player extends Sprite {
 
             setSpeedX(0);
         }
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public Direction getMoveDirection() {
+        return moveDirection;
+    }
+
+    public void setMoveDirection(Direction moveDirection) {
+        this.moveDirection = moveDirection;
     }
 }
