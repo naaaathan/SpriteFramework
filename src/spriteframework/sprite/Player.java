@@ -13,6 +13,8 @@ public class Player extends Sprite {
 
     private Command moveCommand;
 
+    private String imagePath;
+
     /* TODO
         Quando estender a classe player injetar o moveCommand via construtor para desacoplar do framework detalhers do game
     */
@@ -23,7 +25,7 @@ public class Player extends Sprite {
 
     private void initPlayer() {
 
-        var playerImg = "src/images/player.png";
+        var playerImg = getImagePath();
         var ii = new ImageIcon(playerImg);
 
         moveCommand = new MoveCommand(this, Direction.HORIZONTAL);
@@ -99,6 +101,16 @@ public class Player extends Sprite {
             setSpeedY(0);
             moveVertical(key,0);
         }
+    }
+
+    /* TODO REMOVER ESSE PATH HARDCODED QUANDO TIVERMOS PELO MENOS UM PLAYER IMPLEMENTADO EM CADA JOGO */
+
+    public String getImagePath() {
+        return "src/images/player.png";
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public int getWidth() {
