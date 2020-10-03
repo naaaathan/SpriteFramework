@@ -3,8 +3,9 @@ package spriteframework.board;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import com.zetcode.sprite.Shot;
+import com.zetcode.sprite.ShotAlien;
 import spriteframework.sprite.BadSprite;
+import spriteframework.sprite.Shot;
 import spriteframework.utils.Commons;
 import spriteframework.sprite.Player;
 
@@ -32,12 +33,12 @@ public abstract class AbstractBoard extends JPanel {
 
     protected LinkedList<BadSprite> badSprites;
 
-    private Shot shot;
+    protected Shot shot;
 
     private int direction = -1;
     private int deaths = 0;
 
-    private int numberPlayers;
+    protected int numberPlayers;
     protected boolean inGame = true;
     private String explImg = "src/images/explosion.png";
     protected String message = "Game Over";
@@ -75,12 +76,13 @@ public abstract class AbstractBoard extends JPanel {
     }
 
     protected void gameInit() {
+        // TODO REFACTOR GAME INIT
         addPlayer(new Player());
         numberPlayers = 1;
         badSprites = new LinkedList<BadSprite>();
         createBadSprites();
         createOtherSprites();
-        shot = new Shot();
+        shot = new ShotAlien();
     }
 
     public void addPlayer(Player player) {
@@ -144,6 +146,7 @@ public abstract class AbstractBoard extends JPanel {
 
         g.setRenderingHint(RenderingHints.KEY_RENDERING,
                 RenderingHints.VALUE_RENDER_QUALITY);
+        // TODO DESACOPLAR A PARTE DE COLORIR O FUNDO DO JPANEL
         g.setColor(Color.black);
         g.fillRect(0, 0, d.width, d.height);
         g.setColor(Color.green);
@@ -205,7 +208,7 @@ public abstract class AbstractBoard extends JPanel {
         }
     }
 
-    private class TAdapter extends KeyAdapter {
+    public class TAdapter extends KeyAdapter {
 
         @Override
         public void keyReleased(KeyEvent e) {

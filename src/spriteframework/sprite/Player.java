@@ -4,6 +4,7 @@ import spriteframework.sprite.command.Command;
 import spriteframework.sprite.command.impl.MoveCommand;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class Player extends Sprite {
@@ -27,12 +28,11 @@ public class Player extends Sprite {
     private void initPlayer() {
 
         var playerImg = getImagePath();
-        var ii = new ImageIcon(playerImg);
 
         moveCommand = new MoveCommand(this, Direction.HORIZONTAL);
 
-        width = ii.getImage().getWidth(null);
-        setImage(ii.getImage());
+        width = playerImg.getWidth(null);
+        setImage(playerImg);
 
         int START_X = 270;
         setX(START_X);
@@ -42,7 +42,6 @@ public class Player extends Sprite {
     }
 
     public void act() {
-
         moveCommand.execute();
     }
 
@@ -104,10 +103,8 @@ public class Player extends Sprite {
         }
     }
 
-    /* TODO REMOVER ESSE PATH HARDCODED QUANDO TIVERMOS PELO MENOS UM PLAYER IMPLEMENTADO EM CADA JOGO */
-
-    public String getImagePath() {
-        return "src/images/player.png";
+    public Image getImagePath() {
+        return new ImageIcon("src/images/player.png").getImage();
     }
 
     public void setImagePath(String imagePath) {

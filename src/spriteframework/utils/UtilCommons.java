@@ -1,9 +1,10 @@
-package spriteframework.util;
+package spriteframework.utils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
-public class ImageUtil {
+public class UtilCommons {
 
     public static Image getScaledImage(Image srcImg, int w, int h){
         BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
@@ -14,5 +15,9 @@ public class ImageUtil {
         g2.dispose();
 
         return resizedImg;
+    }
+
+    public static int randomByInterval(int x, int size) {
+        return new Random().nextInt(size) + (x - size);
     }
 }

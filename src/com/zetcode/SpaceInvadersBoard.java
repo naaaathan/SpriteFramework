@@ -2,9 +2,10 @@ package com.zetcode;
 
 import com.zetcode.sprite.Bomb;
 import com.zetcode.sprite.BomberSprite;
-import com.zetcode.sprite.Shot;
+import com.zetcode.sprite.ShotAlien;
 import spriteframework.board.AbstractBoard;
 import spriteframework.sprite.BadSprite;
+import spriteframework.sprite.Shot;
 import spriteframework.utils.Commons;
 import spriteframework.sprite.Player;
 import spriteframework.sprite.command.impl.ShotCommand;
@@ -41,7 +42,7 @@ public class SpaceInvadersBoard extends AbstractBoard {
     }
 
     protected void createOtherSprites() {
-        shot = new Shot();
+        shot = new ShotAlien();
     }
 
     private void drawShot(Graphics g) {
@@ -65,7 +66,7 @@ public class SpaceInvadersBoard extends AbstractBoard {
         int y = player.getY();
         int key = e.getKeyCode();
 
-        Shot shotImpl = new Shot(x, y);
+        Shot shotImpl = new ShotAlien(x, y);
         ShotCommand shotCommand = new ShotCommand(shot, shotImpl, key);
 
         if (inGame) {

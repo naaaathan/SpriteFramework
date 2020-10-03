@@ -1,6 +1,6 @@
 package freezemonster.sprites;
 
-import spriteframework.util.ImageUtil;
+import spriteframework.utils.UtilCommons;
 
 import javax.swing.*;
 
@@ -12,7 +12,6 @@ public class BlueMonster extends MonsterSprite {
 
     @Override
     void initMonster(int c1, int c2) {
-
         this.x = c1;
         this.y = c2;
 
@@ -21,7 +20,6 @@ public class BlueMonster extends MonsterSprite {
         String blueMonsterImg = "src/freezemonster/images/monster1.png";
         ImageIcon ii = new ImageIcon(blueMonsterImg);
 
-        setImage(ImageUtil.getScaledImage(ii.getImage(), 30, 30));
-
+        setImage(UtilCommons.getScaledImage(ii.getImage(), 30, 30));
     }
 }

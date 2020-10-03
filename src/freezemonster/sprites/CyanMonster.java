@@ -4,8 +4,9 @@ import spriteframework.utils.UtilCommons;
 
 import javax.swing.*;
 
-public class RedMonster extends MonsterSprite{
-    public RedMonster(int c1, int c2) {
+public class CyanMonster extends MonsterSprite {
+
+    public CyanMonster(int c1, int c2) {
         super(c1, c2);
     }
 
@@ -16,8 +17,8 @@ public class RedMonster extends MonsterSprite{
 
         setGoop(new Goop(c1,c2));
 
-        String redMonsterImg = "src/freezemonster/images/monster6.png";
-        ImageIcon ii = new ImageIcon(redMonsterImg);
+        String cyanMonsterImg = "src/freezemonster/images/monster9.png";
+        ImageIcon ii = new ImageIcon(cyanMonsterImg);
 
         setImage(UtilCommons.getScaledImage(ii.getImage(), 30, 30));
     }

@@ -1,7 +1,6 @@
 package freezemonster;
 
 
-import com.zetcode.SpaceInvadersBoard;
 import spriteframework.board.AbstractBoard;
 import spriteframework.sprite.MainFrame;
 

@@ -18,7 +18,6 @@ public class SpaceInvaders extends MainFrame {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             new SpaceInvaders();
-            // ex.setVisible(true);
         });
     }
 }

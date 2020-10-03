@@ -9,6 +9,24 @@ import java.util.LinkedList;
 public abstract class MonsterSprite extends BadnessBoxSprite {
 
     private Goop goop;
+    private int monsterWidth;
+    private int monsterHeight;
+
+    public int getMonsterWidth() {
+        return monsterWidth;
+    }
+
+    public void setMonsterWidth(int monsterWidth) {
+        this.monsterWidth = monsterWidth;
+    }
+
+    public int getMonsterHeight() {
+        return monsterHeight;
+    }
+
+    public void setMonsterHeight(int monsterHeight) {
+        this.monsterHeight = monsterHeight;
+    }
 
     public MonsterSprite(int c1, int c2) {
         initMonster(c1, c2);
