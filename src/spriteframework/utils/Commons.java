@@ -1,4 +1,4 @@
-package spriteframework.sprite;
+package spriteframework.utils;
 
 public interface Commons {
     int BOMB_HEIGHT = 5;

@@ -1,6 +1,7 @@
 package spriteframework.sprite;
 
 import spriteframework.board.AbstractBoard;
+import spriteframework.utils.Commons;
 
 import javax.swing.*;
 

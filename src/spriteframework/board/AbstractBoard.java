@@ -3,10 +3,9 @@ package spriteframework.board;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import com.zetcode.sprite.Alien;
 import com.zetcode.sprite.Shot;
 import spriteframework.sprite.BadSprite;
-import spriteframework.sprite.Commons;
+import spriteframework.utils.Commons;
 import spriteframework.sprite.Player;
 
 import java.awt.Color;
@@ -22,7 +21,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.LinkedList;
-import java.util.List;
 
 
 public abstract class AbstractBoard extends JPanel {
@@ -30,7 +28,6 @@ public abstract class AbstractBoard extends JPanel {
     protected Dimension d;
 
     //define sprites
-    private List<Alien> alien;
     protected LinkedList<Player> players = new LinkedList<Player>();
 
     protected LinkedList<BadSprite> badSprites;
