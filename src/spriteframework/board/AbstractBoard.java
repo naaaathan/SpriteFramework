@@ -62,7 +62,7 @@ public abstract class AbstractBoard extends JPanel {
         initBoard();
     }
 
-    private void initBoard() {
+    public void initBoard() {
         addKeyListener(new TAdapter());
         setFocusable(true);
         d = new Dimension(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
@@ -74,7 +74,7 @@ public abstract class AbstractBoard extends JPanel {
         gameInit();
     }
 
-    private void gameInit() {
+    protected void gameInit() {
         addPlayer(new Player());
         numberPlayers = 1;
         badSprites = new LinkedList<BadSprite>();
@@ -196,7 +196,7 @@ public abstract class AbstractBoard extends JPanel {
     }
 
 
-    private class GameCycle implements ActionListener {
+    public class GameCycle implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {

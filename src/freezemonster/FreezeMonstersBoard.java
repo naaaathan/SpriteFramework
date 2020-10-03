@@ -2,11 +2,11 @@ package freezemonster;
 
 
 import freezemonster.sprites.BlueMonster;
-import freezemonster.sprites.MonsterSprite;
 import spriteframework.board.AbstractBoard;
 import spriteframework.utils.Commons;
 import spriteframework.sprite.Player;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
@@ -16,13 +16,25 @@ public class FreezeMonstersBoard extends AbstractBoard {
     @Override
     protected void createBadSprites() {
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 6; j++) {
-                MonsterSprite monsterSprite = new BlueMonster(Commons.ALIEN_INIT_X + 18 * j,
-                        Commons.ALIEN_INIT_Y + 18 * i);
-                badSprites.add(monsterSprite);
-            }
-        }
+        BlueMonster monsterSprite = new BlueMonster(Commons.ALIEN_INIT_X + 18, Commons.ALIEN_INIT_Y + 18);
+        badSprites.add(monsterSprite);
+
+
+    }
+
+    @Override
+    public void initBoard() {
+
+        setFocusable(true);
+        d = new Dimension(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
+        setForeground(Color.green);
+        setBackground(Color.green);
+
+        timer = new Timer(Commons.DELAY, new GameCycle());
+        timer.start();
+
+
+        gameInit();
 
     }
 
