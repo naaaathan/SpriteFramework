@@ -9,7 +9,7 @@ public class Player extends Sprite {
 
     private int width;
 
-    protected Direction moveDirection = Direction.HORIZONTAL;
+    protected Direction moveDirection = Direction.BOTH;
 
     private Command moveCommand;
 
@@ -47,14 +47,34 @@ public class Player extends Sprite {
 
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_LEFT) {
+        if (getMoveDirection().equals(Direction.HORIZONTAL)) {
+            moveHorizontal(key, 2);
 
-            setSpeedX(-2);
+        } else if (getMoveDirection().equals(Direction.VERTICAL)) {
+            moveVertical(key, 2);
+        } else if (getMoveDirection().equals(Direction.BOTH)) {
+            moveHorizontal(key, 2);
+            moveVertical(key, 2);
+        }
+    }
+
+    private void moveVertical(int key, int speed) {
+        if (key == KeyEvent.VK_DOWN) {
+            setSpeedY(speed);
+        }
+        if (key == KeyEvent.VK_UP) {
+            setSpeedY(-speed);
+        }
+    }
+
+    private void moveHorizontal(int key, int speed) {
+
+        if (key == KeyEvent.VK_LEFT) {
+            setSpeedX(-speed);
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-
-            setSpeedX(2);
+            setSpeedX(speed);
         }
     }
 
@@ -63,13 +83,21 @@ public class Player extends Sprite {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-
             setSpeedX(0);
+            moveHorizontal(key,0);
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-
             setSpeedX(0);
+            moveHorizontal(key,0);
+        }
+        if(key == KeyEvent.VK_UP){
+            setSpeedY(0);
+            moveVertical(key,0);
+        }
+        if(key == KeyEvent.VK_DOWN){
+            setSpeedY(0);
+            moveVertical(key,0);
         }
     }
 

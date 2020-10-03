@@ -6,6 +6,7 @@ import spriteframework.sprite.Direction;
 import spriteframework.sprite.Player;
 
 public class MoveCommand implements Command {
+
     private final Player player;
 
     private Direction direction;
@@ -18,12 +19,18 @@ public class MoveCommand implements Command {
     @Override
     public void execute() {
 
-        this.player.x += player.getSpeedX();
-
         if (player.getMoveDirection().equals(Direction.HORIZONTAL)) {
+            this.player.x += player.getSpeedX();
             moveHorizontalDirection();
         }
         if (player.getMoveDirection().equals(Direction.VERTICAL)) {
+            this.player.y += player.getSpeedY();
+            moveVerticalDirection();
+        }
+        if(player.getMoveDirection().equals(Direction.BOTH)){
+            this.player.x += player.getSpeedX();
+            this.player.y += player.getSpeedY();
+            moveHorizontalDirection();
             moveVerticalDirection();
         }
 
