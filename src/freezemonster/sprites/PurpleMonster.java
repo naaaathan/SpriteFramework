@@ -1,9 +1,5 @@
 package freezemonster.sprites;
 
-import spriteframework.utils.UtilCommons;
-
-import javax.swing.*;
-
 public class PurpleMonster extends MonsterSprite {
 
     public PurpleMonster(int c1, int c2) {
@@ -11,15 +7,12 @@ public class PurpleMonster extends MonsterSprite {
     }
 
     @Override
-    void initMonster(int c1, int c2) {
-        this.x = c1;
-        this.y = c2;
+    public String getFreezeImagePath() {
+        return "src/freezemonster/images/monster7bg.png";
+    }
 
-        setGoop(new Goop(c1,c2));
-
-        String purpleMonsterImg = "src/freezemonster/images/monster7.png";
-        ImageIcon ii = new ImageIcon(purpleMonsterImg);
-
-        setImage(UtilCommons.getScaledImage(ii.getImage(), 30, 30));
+    @Override
+    public String getImagePath() {
+        return "src/freezemonster/images/monster7.png";
     }
 }

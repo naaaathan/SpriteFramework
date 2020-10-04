@@ -12,6 +12,7 @@ public class Player extends Sprite {
     private int width;
 
     protected Direction moveDirection = Direction.BOTH;
+    protected MoveDirection playerDirection = MoveDirection.TOP;
 
     private Command moveCommand;
 
@@ -51,7 +52,6 @@ public class Player extends Sprite {
 
         if (getMoveDirection().equals(Direction.HORIZONTAL)) {
             moveHorizontal(key, 2);
-
         } else if (getMoveDirection().equals(Direction.VERTICAL)) {
             moveVertical(key, 2);
         } else if (getMoveDirection().equals(Direction.BOTH)) {
@@ -63,9 +63,11 @@ public class Player extends Sprite {
     private void moveVertical(int key, int speed) {
         if (key == KeyEvent.VK_DOWN) {
             setSpeedY(speed);
+            setPlayerDirection(MoveDirection.BOTTOM);
         }
         if (key == KeyEvent.VK_UP) {
             setSpeedY(-speed);
+            setPlayerDirection(MoveDirection.TOP);
         }
     }
 
@@ -73,33 +75,26 @@ public class Player extends Sprite {
 
         if (key == KeyEvent.VK_LEFT) {
             setSpeedX(-speed);
+            setPlayerDirection(MoveDirection.LEFT);
         }
 
         if (key == KeyEvent.VK_RIGHT) {
             setSpeedX(speed);
+            setPlayerDirection(MoveDirection.RIGHT);
         }
     }
 
     public void keyReleased(KeyEvent e) {
-
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
             setSpeedX(0);
-            moveHorizontal(key,0);
-        }
-
-        if (key == KeyEvent.VK_RIGHT) {
+        } else if (key == KeyEvent.VK_RIGHT) {
             setSpeedX(0);
-            moveHorizontal(key,0);
-        }
-        if(key == KeyEvent.VK_UP){
+        } else if(key == KeyEvent.VK_UP){
             setSpeedY(0);
-            moveVertical(key,0);
-        }
-        if(key == KeyEvent.VK_DOWN){
+        } else if(key == KeyEvent.VK_DOWN){
             setSpeedY(0);
-            moveVertical(key,0);
         }
     }
 
@@ -125,5 +120,13 @@ public class Player extends Sprite {
 
     public void setMoveDirection(Direction moveDirection) {
         this.moveDirection = moveDirection;
+    }
+
+    public MoveDirection getPlayerDirection() {
+        return playerDirection;
+    }
+
+    public void setPlayerDirection(MoveDirection playerDirection) {
+        this.playerDirection = playerDirection;
     }
 }

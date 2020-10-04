@@ -16,22 +16,18 @@ public class Sprite {
 
 
     public Sprite() {
-
         visible = true;
     }
 
     public void die() {
-
         visible = false;
     }
 
     public boolean isVisible() {
-
         return visible;
     }
 
     protected void setVisible(boolean visible) {
-
         this.visible = visible;
     }
 
@@ -91,17 +87,11 @@ public class Sprite {
         this.speedX = speedX;
     }
 
-//    @Override
-//    public void move(Direction direction) {
-//
-//        if (direction.equals(Direction.BOTTOM) || direction.equals(Direction.TOP)) {
-//            this.y += speedY;
-//        } else if (direction.equals(Direction.RIGHT) || direction.equals(Direction.LEFT)) {
-//            this.x += speedX;
-//        }
-//    }
-
     public void moveX(int x) {
         this.x += x;
+    }
+
+    public void moveY(int y) {
+        this.y += y;
     }
 }

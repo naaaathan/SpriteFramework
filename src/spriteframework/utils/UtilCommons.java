@@ -1,5 +1,7 @@
 package spriteframework.utils;
 
+import spriteframework.sprite.MoveDirection;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
@@ -19,5 +21,9 @@ public class UtilCommons {
 
     public static int randomByInterval(int x, int size) {
         return new Random().nextInt(size) + (x - size);
+    }
+
+    public static MoveDirection randomDirection()  {
+        return MoveDirection.class.getEnumConstants()[new Random().nextInt(MoveDirection.class.getEnumConstants().length)];
     }
 }
