@@ -16,7 +16,7 @@ public class FreezeRay extends Shot {
     }
 
     @Override
-    public Image getImagePath() {
+    public Image getImage() {
         return UtilCommons.getScaledImage(new ImageIcon("src/freezemonster/images/ray.png").getImage(), 30, 30);
     }
 }

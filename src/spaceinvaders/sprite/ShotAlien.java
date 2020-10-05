@@ -1,4 +1,4 @@
-package com.zetcode.sprite;
+package spaceinvaders.sprite;
 
 import spriteframework.sprite.Shot;
 
@@ -15,7 +15,7 @@ public class ShotAlien extends Shot {
     }
 
     @Override
-    public Image getImagePath() {
-        return new ImageIcon("src/images/shot.png").getImage();
+    public Image getImage() {
+        return new ImageIcon("src/spaceinvaders/images/shot.png").getImage();
     }
 }

@@ -28,7 +28,7 @@ public class Player extends Sprite {
 
     private void initPlayer() {
 
-        var playerImg = getImagePath();
+        var playerImg = getImage();
 
         moveCommand = new MoveCommand(this, Direction.HORIZONTAL);
 
@@ -98,8 +98,8 @@ public class Player extends Sprite {
         }
     }
 
-    public Image getImagePath() {
-        return new ImageIcon("src/images/player.png").getImage();
+    public Image getImage() {
+        return new ImageIcon("src/spaceinvaders/images/player.png").getImage();
     }
 
     public void setImagePath(String imagePath) {

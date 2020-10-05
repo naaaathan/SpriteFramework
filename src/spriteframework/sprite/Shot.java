@@ -13,11 +13,11 @@ public abstract class Shot extends Sprite {
         initShot(x, y);
     }
 
-    public abstract Image getImagePath();
+    public abstract Image getImage();
 
     private void initShot(int x, int y) {
 
-        var shotImg = getImagePath();
+        var shotImg = getImage();
         setImage(shotImg);
 
         int H_SPACE = 6;

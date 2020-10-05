@@ -1,4 +1,4 @@
-package com.zetcode.sprite;
+package spaceinvaders.sprite;
 
 import spriteframework.sprite.Player;
 

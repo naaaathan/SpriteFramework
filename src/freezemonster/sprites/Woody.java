@@ -18,7 +18,7 @@ public class Woody extends Player {
     }
 
     @Override
-    public Image getImagePath() {
+    public Image getImage() {
         return UtilCommons.getScaledImage(new ImageIcon("src/freezemonster/images/woody.png").getImage(), 25, 55);
     }
 }

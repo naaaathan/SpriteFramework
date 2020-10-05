@@ -1,4 +1,4 @@
-package com.zetcode.sprite;
+package spaceinvaders.sprite;
 
 import spriteframework.sprite.BadSprite;
 
@@ -18,7 +18,7 @@ public class Bomb extends BadSprite {
         this.x = x;
         this.y = y;
 
-        String bombImg = "src/images/bomb.png";
+        String bombImg = "src/spaceinvaders/images/bomb.png";
         ImageIcon ii = new ImageIcon(bombImg);
         setImage(ii.getImage());
     }

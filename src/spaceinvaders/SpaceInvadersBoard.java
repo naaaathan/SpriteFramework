@@ -1,8 +1,8 @@
-package com.zetcode;
+package spaceinvaders;
 
-import com.zetcode.sprite.Bomb;
-import com.zetcode.sprite.BomberSprite;
-import com.zetcode.sprite.ShotAlien;
+import spaceinvaders.sprite.Bomb;
+import spaceinvaders.sprite.BomberSprite;
+import spaceinvaders.sprite.ShotAlien;
 import spriteframework.board.AbstractBoard;
 import spriteframework.sprite.BadSprite;
 import spriteframework.sprite.Shot;
@@ -28,7 +28,7 @@ public class SpaceInvadersBoard extends AbstractBoard {
     private int deaths = 0;
 
 
-    private String explImg = "images/explosion.png";
+    private String explImg = "spaceinvaders/spaceinvaders/images/explosion.png";
 
 
     protected void createBadSprites() {  // create sprites

@@ -3,7 +3,7 @@ package spriteframework.board;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import com.zetcode.sprite.ShotAlien;
+import spaceinvaders.sprite.ShotAlien;
 import spriteframework.sprite.BadSprite;
 import spriteframework.sprite.Shot;
 import spriteframework.utils.Commons;
@@ -40,7 +40,8 @@ public abstract class AbstractBoard extends JPanel {
 
     protected int numberPlayers;
     protected boolean inGame = true;
-    private String explImg = "src/images/explosion.png";
+    // TODO DESACOPLAR ESSA IMAGEM DAQUI
+    private String explImg = "src/spaceinvaders/images/explosion.png";
     protected String message = "Game Over";
 
     protected Timer timer;

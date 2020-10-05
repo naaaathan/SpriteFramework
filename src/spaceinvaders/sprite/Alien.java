@@ -1,4 +1,4 @@
-package com.zetcode.sprite;
+package spaceinvaders.sprite;
 
 import spriteframework.sprite.Sprite;
 
@@ -20,7 +20,7 @@ public class Alien extends Sprite {
 
         bomb = new Bomb(x, y);
 
-        var alienImg = "src/images/alien.png";
+        var alienImg = "src/spaceinvaders/images/alien.png";
         var ii = new ImageIcon(alienImg);
 
         setImage(ii.getImage());
@@ -52,7 +52,7 @@ public class Alien extends Sprite {
             this.x = x;
             this.y = y;
 
-            var bombImg = "src/images/bomb.png";
+            var bombImg = "src/spaceinvaders/images/bomb.png";
             var ii = new ImageIcon(bombImg);
             setImage(ii.getImage());
         }

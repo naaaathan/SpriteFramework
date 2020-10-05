@@ -1,4 +1,4 @@
-package com.zetcode.sprite;
+package spaceinvaders.sprite;
 
 import spriteframework.sprite.BadSprite;
 import spriteframework.sprite.BadnessBoxSprite;
@@ -20,7 +20,7 @@ public class BomberSprite extends BadnessBoxSprite {
 
         bomb = new Bomb(x, y);
 
-        String alienImg = "src/images/alien.png";
+        String alienImg = "src/spaceinvaders/images/alien.png";
         ImageIcon ii = new ImageIcon(alienImg);
 
         setImage(ii.getImage());

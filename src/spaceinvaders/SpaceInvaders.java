@@ -1,4 +1,4 @@
-package com.zetcode;
+package spaceinvaders;
 
 import spriteframework.board.AbstractBoard;
 import spriteframework.sprite.MainFrame;
