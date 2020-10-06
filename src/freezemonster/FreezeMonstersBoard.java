@@ -22,7 +22,6 @@ public class FreezeMonstersBoard extends AbstractBoard {
 
     private Shot shot;
     private LinkedList<MonsterSprite> monsterSprites;
-    private int direction;
     private int freezes = 0;
     private boolean firstTime = true;
 
@@ -36,11 +35,10 @@ public class FreezeMonstersBoard extends AbstractBoard {
                 new RedMonster(new Random().nextInt(Commons.BOARD_WIDTH), new Random().nextInt(Commons.BOARD_HEIGHT))
         ));
         badSprites.addAll(monsterSprites);
-        monsterSprites.addAll(monsterSprites);
     }
 
     @Override
-    protected void gameInit() {
+    public void gameInit() {
         addPlayer(new Woody());
         numberPlayers = 1;
         badSprites = new LinkedList<BadSprite>();

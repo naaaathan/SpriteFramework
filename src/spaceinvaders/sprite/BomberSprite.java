@@ -14,7 +14,6 @@ public class BomberSprite extends BadnessBoxSprite {
     }
 
     private void initBomber(int x, int y) {
-
         this.x = x;
         this.y = y;
 

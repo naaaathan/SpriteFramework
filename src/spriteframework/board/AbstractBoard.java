@@ -70,15 +70,7 @@ public abstract class AbstractBoard extends JPanel {
         gameInit();
     }
 
-    protected void gameInit() {
-        // TODO REFACTOR GAME INIT
-        addPlayer(new Player());
-        numberPlayers = 1;
-        badSprites = new LinkedList<BadSprite>();
-        createBadSprites();
-        createOtherSprites();
-        shot = new ShotAlien();
-    }
+    public abstract void gameInit();
 
     public void addPlayer(Player player) {
         players.add(player);

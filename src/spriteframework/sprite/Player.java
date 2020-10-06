@@ -3,24 +3,20 @@ package spriteframework.sprite;
 import spriteframework.sprite.command.Command;
 import spriteframework.sprite.command.impl.MoveCommand;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class Player extends Sprite {
+public abstract class Player extends Sprite {
 
     private int width;
 
-    protected Direction moveDirection = Direction.BOTH;
+    protected Direction moveDirection;
     protected MoveDirection playerDirection = MoveDirection.TOP;
 
     private Command moveCommand;
 
-    /* TODO
-        Quando estender a classe player injetar o moveCommand via construtor para desacoplar do framework detalhers do game
-    */
-
-    public Player() {
+    public Player(Direction moveDirection) {
+        this.moveDirection = moveDirection;
         initPlayer();
     }
 
@@ -96,9 +92,7 @@ public class Player extends Sprite {
         }
     }
 
-    public Image getImage() {
-        return new ImageIcon("src/spaceinvaders/images/player.png").getImage();
-    }
+    public abstract Image getImage();
 
     public int getWidth() {
         return width;

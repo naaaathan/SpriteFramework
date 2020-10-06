@@ -3,6 +3,7 @@ package spaceinvaders;
 import spaceinvaders.sprite.Bomb;
 import spaceinvaders.sprite.BomberSprite;
 import spaceinvaders.sprite.ShotAlien;
+import spaceinvaders.sprite.Spaceship;
 import spriteframework.board.AbstractBoard;
 import spriteframework.sprite.BadSprite;
 import spriteframework.sprite.Shot;
@@ -15,6 +16,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -31,6 +33,16 @@ public class SpaceInvadersBoard extends AbstractBoard {
 
     private String explImg = "spaceinvaders/spaceinvaders/images/explosion.png";
 
+    @Override
+    public void gameInit() {
+        // TODO REFACTOR GAME INIT
+        addPlayer(new Spaceship());
+        numberPlayers = 1;
+        badSprites = new LinkedList<BadSprite>();
+        createBadSprites();
+        createOtherSprites();
+        shot = new ShotAlien();
+    }
 
     protected void createBadSprites() {  // create sprites
         for (int i = 0; i < 4; i++) {
