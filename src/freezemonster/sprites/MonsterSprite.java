@@ -7,7 +7,6 @@ import spriteframework.sprite.MoveDirection;
 import spriteframework.utils.UtilCommons;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.LinkedList;
 
 public abstract class MonsterSprite extends BadnessBoxSprite {
@@ -43,11 +42,6 @@ public abstract class MonsterSprite extends BadnessBoxSprite {
 
     public void setMonsterDirection(MoveDirection monsterDirection) {
         this.monsterDirection = monsterDirection;
-    }
-
-    @Override
-    public void die() {
-        this.freeze();
     }
 
     public void freeze() {

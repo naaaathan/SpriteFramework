@@ -2,6 +2,7 @@ package freezemonster;
 
 
 import freezemonster.sprites.*;
+import freezemonster.state.DeathState;
 import spriteframework.board.AbstractBoard;
 import spriteframework.sprite.BadSprite;
 import spriteframework.sprite.MoveDirection;
@@ -193,7 +194,7 @@ public class FreezeMonstersBoard extends AbstractBoard {
                     if (UtilCommons.checkContact(shot, monster)) {
                         if (!monster.isFreezed()) {
                             freezes++;
-                            monster.die();
+                            new DeathState(monster);
                         }
                         shot.die();
                     }

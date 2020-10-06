@@ -1,5 +1,6 @@
 package spaceinvaders;
 
+import spaceinvaders.state.DeathState;
 import spaceinvaders.sprite.Bomb;
 import spaceinvaders.sprite.BomberSprite;
 import spaceinvaders.sprite.ShotAlien;
@@ -108,7 +109,7 @@ public class SpaceInvadersBoard extends AbstractBoard {
                     if (UtilCommons.checkContact(shot, alien)) {
                         ImageIcon ii = new ImageIcon(explImg);
                         alien.setImage(ii.getImage());
-                        alien.setDying(true);
+                        new DeathState(alien);
                         deaths++;
                         shot.die();
                     }
