@@ -11,7 +11,6 @@ import spriteframework.utils.Commons;
 import spriteframework.sprite.Player;
 import spriteframework.utils.UtilCommons;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
@@ -84,14 +83,13 @@ public class FreezeMonstersBoard extends AbstractBoard {
 
     @Override
     protected void update() {
-
+        // TODO AVALIAR SE É POSSIVEL SUBSTITUIR ESSA VALIDAÇÃO POR UM OBSERVER (HÁ DE SER IMPLEMENTADO NO FRAMEWORK)
         if (freezes == Commons.NUMBER_OF_MONSTERS_TO_FREEZE) {
             inGame = false;
             timer.stop();
             message = "Game won!";
         }
 
-        // TODO PERFORM UPDATE (MUITA COISA)
         this.players.forEach(Player::act);
 
         hitMonster();
@@ -120,65 +118,58 @@ public class FreezeMonstersBoard extends AbstractBoard {
         Random generator = new Random();
 
         for (MonsterSprite monster : monsterSprites) {
-
-            int shot = generator.nextInt(15);
+            int shotChance = generator.nextInt(15);
             Goop goop = monster.getGoop();
 
-            if (shot == Commons.CHANCE && monster.isVisible() && !monster.isFreezed() && goop.isDestroyed()) {
+            if (shotChance == Commons.CHANCE && monster.isVisible() && !monster.isFreezed() && goop.isDestroyed()) {
                 goop.setDestroyed(false);
                 goop.setX(monster.getX());
                 goop.setY(monster.getY());
             }
-
-            int goopX = goop.getX();
-            int goopY = goop.getY();
-            int playerX = players.get(0).getX();
-            int playerY = players.get(0).getY();
-
             if (players.get(0).isVisible() && !goop.isDestroyed()) {
-
-                if (goopX >= (playerX)
-                        && goopX <= (playerX + Commons.PLAYER_WIDTH)
-                        && goopY >= (playerY)
-                        && goopY <= (playerY + Commons.PLAYER_HEIGHT)) {
-
+                if (UtilCommons.checkContact(goop, this.players.get(0))) {
                     players.get(0).setDying(true);
                     goop.setDestroyed(true);
                 }
             }
-
             if (!goop.isDestroyed()) {
-                if (goop.getGoopDirection() == null) {
-                    goop.setGoopDirection(monster.getMonsterDirection());
-                }
+                if (shot.isVisible() && UtilCommons.checkContact(goop, shot)) {
+                    goop.setDestroyed(true);
+                    shot.setShotDirection(null);
+                    shot.die();
+                } else {
+                    if (goop.getGoopDirection() == null) {
+                        goop.setGoopDirection(monster.getMonsterDirection());
+                    }
 
-                if (goop.getGoopDirection().equals(MoveDirection.BOTTOM)) {
-                    if (goop.getY() >= Commons.BOARD_HEIGHT) {
-                        goop.setGoopDirection(null);
-                        goop.setDestroyed(true);
-                    } else {
-                        goop.setY(goop.getY() + 1);
-                    }
-                } else if (goop.getGoopDirection().equals(MoveDirection.TOP)) {
-                    if (goop.getY() < 0) {
-                        goop.setGoopDirection(null);
-                        goop.setDestroyed(true);
-                    } else {
-                        goop.setY(goop.getY() - 1);
-                    }
-                } else if (goop.getGoopDirection().equals(MoveDirection.LEFT)) {
-                    if (goop.getX() < 0) {
-                        goop.setGoopDirection(null);
-                        goop.setDestroyed(true);
-                    } else {
-                        goop.setX(goop.getX() - 1);
-                    }
-                } else if (goop.getGoopDirection().equals(MoveDirection.RIGHT)) {
-                    if (goop.getX() >= Commons.BOARD_WIDTH) {
-                        goop.setGoopDirection(null);
-                        goop.setDestroyed(true);
-                    } else {
-                        goop.setX(goop.getX() + 1);
+                    if (goop.getGoopDirection().equals(MoveDirection.BOTTOM)) {
+                        if (goop.getY() >= Commons.BOARD_HEIGHT) {
+                            goop.setGoopDirection(null);
+                            goop.setDestroyed(true);
+                        } else {
+                            goop.setY(goop.getY() + 1);
+                        }
+                    } else if (goop.getGoopDirection().equals(MoveDirection.TOP)) {
+                        if (goop.getY() < 0) {
+                            goop.setGoopDirection(null);
+                            goop.setDestroyed(true);
+                        } else {
+                            goop.setY(goop.getY() - 1);
+                        }
+                    } else if (goop.getGoopDirection().equals(MoveDirection.LEFT)) {
+                        if (goop.getX() < 0) {
+                            goop.setGoopDirection(null);
+                            goop.setDestroyed(true);
+                        } else {
+                            goop.setX(goop.getX() - 1);
+                        }
+                    } else if (goop.getGoopDirection().equals(MoveDirection.RIGHT)) {
+                        if (goop.getX() >= Commons.BOARD_WIDTH) {
+                            goop.setGoopDirection(null);
+                            goop.setDestroyed(true);
+                        } else {
+                            goop.setX(goop.getX() + 1);
+                        }
                     }
                 }
             }
@@ -199,20 +190,9 @@ public class FreezeMonstersBoard extends AbstractBoard {
 
     private void hitMonster() {
         if (shot.isVisible()) {
-            int shotX = shot.getX();
-            int shotY = shot.getY();
-
             for (MonsterSprite monster : monsterSprites) {
-                int monsterX = monster.getX();
-                int monsterY = monster.getY();
-
-                // TODO ARRUMAR O CONTATO
                 if (monster.isVisible() && shot.isVisible()) {
-                    if (shotX >= (monsterX)
-                            && shotX <= (monsterX + 30)
-                            && shotY >= (monsterY)
-                            && shotY <= (monsterY + 30)) {
-
+                    if (UtilCommons.checkContact(shot, monster)) {
                         if (!monster.isFreezed()) {
                             freezes++;
                             monster.die();

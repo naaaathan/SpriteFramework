@@ -40,16 +40,10 @@ public abstract class AbstractBoard extends JPanel {
 
     protected int numberPlayers;
     protected boolean inGame = true;
-    // TODO DESACOPLAR ESSA IMAGEM DAQUI
-    private String explImg = "src/spaceinvaders/images/explosion.png";
     protected String message = "Game Over";
 
     protected Timer timer;
 
-    // Frozen Spots
-    //  void initBoard()
-    //
-    // HotSpots
     protected abstract void createBadSprites();
 
     protected abstract void createOtherSprites();

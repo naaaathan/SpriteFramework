@@ -14,7 +14,6 @@ public class Sprite {
     public int x;
     public int y;
 
-
     public Sprite() {
         visible = true;
     }
@@ -32,42 +31,34 @@ public class Sprite {
     }
 
     public void setImage(Image image) {
-
         this.image = image;
     }
 
     public Image getImage() {
-
         return image;
     }
 
     public void setX(int x) {
-
         this.x = x;
     }
 
     public void setY(int y) {
-
         this.y = y;
     }
 
     public int getY() {
-
         return y;
     }
 
     public int getX() {
-
         return x;
     }
 
     public void setDying(boolean dying) {
-
         this.dying = dying;
     }
 
     public boolean isDying() {
-
         return this.dying;
     }
 
@@ -93,5 +84,13 @@ public class Sprite {
 
     public void moveY(int y) {
         this.y += y;
+    }
+
+    public Rectangle getBounds() {
+        if (image == null) {
+            return new Rectangle(this.x, this.y, 0, 0);
+        }
+
+        return new Rectangle(this.x, this.y, image.getWidth(null), image.getHeight(null));
     }
 }

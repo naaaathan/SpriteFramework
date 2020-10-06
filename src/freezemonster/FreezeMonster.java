@@ -19,7 +19,6 @@ public class FreezeMonster extends MainFrame {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             new FreezeMonster();
-            // ex.setVisible(true);
         });
     }
 }

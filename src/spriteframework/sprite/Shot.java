@@ -16,7 +16,6 @@ public abstract class Shot extends Sprite {
     public abstract Image getImage();
 
     private void initShot(int x, int y) {
-
         var shotImg = getImage();
         setImage(shotImg);
 

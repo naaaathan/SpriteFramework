@@ -16,8 +16,6 @@ public class Player extends Sprite {
 
     private Command moveCommand;
 
-    private String imagePath;
-
     /* TODO
         Quando estender a classe player injetar o moveCommand via construtor para desacoplar do framework detalhers do game
     */
@@ -100,10 +98,6 @@ public class Player extends Sprite {
 
     public Image getImage() {
         return new ImageIcon("src/spaceinvaders/images/player.png").getImage();
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
     }
 
     public int getWidth() {

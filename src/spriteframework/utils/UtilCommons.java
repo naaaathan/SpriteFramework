@@ -1,6 +1,7 @@
 package spriteframework.utils;
 
 import spriteframework.sprite.MoveDirection;
+import spriteframework.sprite.Sprite;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -25,5 +26,9 @@ public class UtilCommons {
 
     public static MoveDirection randomDirection()  {
         return MoveDirection.class.getEnumConstants()[new Random().nextInt(MoveDirection.class.getEnumConstants().length)];
+    }
+
+    public static Boolean checkContact(Sprite sprite1, Sprite sprite2) {
+        return sprite1.getBounds().intersects(sprite2.getBounds());
     }
 }
