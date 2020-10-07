@@ -1,4 +1,4 @@
-package spriteframework.sprite;
+package spriteframework.utils;
 
 public enum Direction {
 

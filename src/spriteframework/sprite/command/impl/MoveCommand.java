@@ -2,7 +2,7 @@ package spriteframework.sprite.command.impl;
 
 import spriteframework.sprite.command.Command;
 import spriteframework.utils.Commons;
-import spriteframework.sprite.Direction;
+import spriteframework.utils.Direction;
 import spriteframework.sprite.Player;
 
 public class MoveCommand implements Command {

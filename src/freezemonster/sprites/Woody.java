@@ -1,6 +1,6 @@
 package freezemonster.sprites;
 
-import spriteframework.sprite.Direction;
+import spriteframework.utils.Direction;
 import spriteframework.sprite.Player;
 import spriteframework.utils.UtilCommons;
 

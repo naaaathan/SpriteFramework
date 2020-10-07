@@ -2,6 +2,7 @@ package spriteframework.sprite;
 
 import spriteframework.sprite.command.Command;
 import spriteframework.sprite.command.impl.MoveCommand;
+import spriteframework.utils.Direction;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

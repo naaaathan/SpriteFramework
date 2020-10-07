@@ -11,7 +11,6 @@ public class Goop extends BadSprite {
     private boolean destroyed;
     private MoveDirection goopDirection;
 
-    // TODO PASSAR PARA O BADSPRITE
     private void initGoop(int x, int y) {
         setDestroyed(true);
 
