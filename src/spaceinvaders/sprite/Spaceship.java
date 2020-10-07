@@ -1,6 +1,6 @@
 package spaceinvaders.sprite;
 
-import spriteframework.sprite.Direction;
+import spriteframework.utils.Direction;
 import spriteframework.sprite.Player;
 
 import javax.swing.*;
