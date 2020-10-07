@@ -89,6 +89,13 @@ public class SpaceInvadersBoard extends AbstractBoard {
         shot = shotCommand.getShot();
     }
 
+    @Override
+    protected void setBackgroundColor(Graphics2D g) {
+        g.setColor(Color.black);
+        g.fillRect(0, 0, d.width, d.height);
+        g.setColor(Color.green);
+    }
+
 
     protected void update() {
         if (deaths == Commons.NUMBER_OF_ALIENS_TO_DESTROY) {

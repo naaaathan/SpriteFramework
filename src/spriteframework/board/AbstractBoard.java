@@ -54,6 +54,8 @@ public abstract class AbstractBoard extends JPanel {
 
     protected abstract void processOtherSprites(Player player, KeyEvent e);
 
+    protected abstract void setBackgroundColor(Graphics2D g);
+
     public AbstractBoard() {
         initBoard();
     }
@@ -133,10 +135,8 @@ public abstract class AbstractBoard extends JPanel {
 
         g.setRenderingHint(RenderingHints.KEY_RENDERING,
                 RenderingHints.VALUE_RENDER_QUALITY);
-        // TODO DESACOPLAR A PARTE DE COLORIR O FUNDO DO JPANEL
-        g.setColor(Color.black);
-        g.fillRect(0, 0, d.width, d.height);
-        g.setColor(Color.green);
+
+        setBackgroundColor(g);
 
         if (inGame) {
 

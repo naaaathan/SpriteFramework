@@ -81,8 +81,13 @@ public class FreezeMonstersBoard extends AbstractBoard {
     }
 
     @Override
+    protected void setBackgroundColor(Graphics2D g) {
+        g.setColor(new Color(50,205,50));
+        g.fillRect(0, 0, d.width, d.height);
+    }
+
+    @Override
     protected void update() {
-        // TODO AVALIAR SE É POSSIVEL SUBSTITUIR ESSA VALIDAÇÃO POR UM OBSERVER (HÁ DE SER IMPLEMENTADO NO FRAMEWORK)
         if (freezes == Commons.NUMBER_OF_MONSTERS_TO_FREEZE) {
             inGame = false;
             timer.stop();
