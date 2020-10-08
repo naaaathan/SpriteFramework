@@ -108,7 +108,7 @@ public class FreezeMonstersBoard extends AbstractBoard {
             MonsterSprite monster = it.next();
 
             if (!monster.isFreezed()) {
-                if (new Random().nextInt(7) > 1) {
+                if (new Random().nextInt(30) > 1) {
                     moveTo(monster, monster.getMonsterDirection());
                 } else {
                     MoveDirection randomDirection = UtilCommons.randomDirection();
