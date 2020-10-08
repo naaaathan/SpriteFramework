@@ -56,15 +56,4 @@ public class MoveCommand implements Command {
         }
     }
 
-    public Player getPlayer() {
-        return player;
-    }
-
-    public Direction getDirection() {
-        return direction;
-    }
-
-    public void setDirection(Direction direction) {
-        this.direction = direction;
-    }
 }

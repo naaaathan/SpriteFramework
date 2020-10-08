@@ -20,6 +20,12 @@ public abstract class MonsterSprite extends BadnessBoxSprite {
     public abstract String getFreezeImagePath();
     public abstract String getImagePath();
 
+    public MonsterSprite(int c1, int c2) {
+        this.freezed = false;
+        this.setMonsterDirection(MoveDirection.TOP);
+        initMonster(c1, c2);
+    }
+
     public void freezeMonster() {
         ImageIcon ii = new ImageIcon(getFreezeImagePath());
         setImage(UtilCommons.getScaledImage(ii.getImage(), 30, 30));
@@ -32,8 +38,27 @@ public abstract class MonsterSprite extends BadnessBoxSprite {
         setGoop(new Goop(c1,c2));
 
         ImageIcon ii = new ImageIcon(getImagePath());
+        setMonsterWidth(30);
+        setMonsterHeight(30);
 
-        setImage(UtilCommons.getScaledImage(ii.getImage(), 30, 30));
+        setImage(UtilCommons.getScaledImage(ii.getImage(), getMonsterHeight(), getMonsterHeight()));
+    }
+
+    @Override
+    public void act() {
+
+    }
+
+    @Override
+    public LinkedList<BadSprite> getBadnesses() {
+        LinkedList<BadSprite> badSprites = new LinkedList<>();
+        badSprites.add(goop);
+        return badSprites;
+    }
+
+    public void freeze() {
+        setFreezed(true);
+        this.freezeMonster();
     }
 
     public MoveDirection getMonsterDirection() {
@@ -42,11 +67,6 @@ public abstract class MonsterSprite extends BadnessBoxSprite {
 
     public void setMonsterDirection(MoveDirection monsterDirection) {
         this.monsterDirection = monsterDirection;
-    }
-
-    public void freeze() {
-        setFreezed(true);
-        this.freezeMonster();
     }
 
     public boolean isFreezed() {
@@ -73,12 +93,6 @@ public abstract class MonsterSprite extends BadnessBoxSprite {
         this.monsterHeight = monsterHeight;
     }
 
-    public MonsterSprite(int c1, int c2) {
-        this.freezed = false;
-        this.setMonsterDirection(MoveDirection.TOP);
-        initMonster(c1, c2);
-    }
-
     public Goop getGoop() {
         return goop;
     }
@@ -87,17 +101,4 @@ public abstract class MonsterSprite extends BadnessBoxSprite {
         this.goop = goop;
     }
 
-
-    @Override
-    public void act() {
-
-    }
-
-
-    @Override
-    public LinkedList<BadSprite> getBadnesses() {
-        LinkedList<BadSprite> badSprites = new LinkedList<>();
-        badSprites.add(goop);
-        return badSprites;
-    }
 }

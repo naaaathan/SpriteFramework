@@ -28,12 +28,11 @@ public class FreezeMonstersBoard extends AbstractBoard {
 
     @Override
     protected void createBadSprites() {
-        // TODO LIMITAR PARA GERAR O MONSTRO DENTRO DO FRAME (NUMBER_OF_MONSTERS_TO_FREEZE)
         monsterSprites = new LinkedList(Arrays.asList(
-                new BlueMonster(new Random().nextInt(Commons.BOARD_WIDTH), new Random().nextInt(Commons.BOARD_HEIGHT)),
-                new CyanMonster(new Random().nextInt(Commons.BOARD_WIDTH), new Random().nextInt(Commons.BOARD_HEIGHT)),
-                new PurpleMonster(new Random().nextInt(Commons.BOARD_WIDTH), new Random().nextInt(Commons.BOARD_HEIGHT)),
-                new RedMonster(new Random().nextInt(Commons.BOARD_WIDTH), new Random().nextInt(Commons.BOARD_HEIGHT))
+                new BlueMonster(new Random().nextInt((3 * Commons.BOARD_WIDTH) / 4), new Random().nextInt((3 * Commons.BOARD_HEIGHT) / 4)),
+                new CyanMonster(new Random().nextInt((3 * Commons.BOARD_WIDTH) / 4), new Random().nextInt((3 * Commons.BOARD_HEIGHT) / 4)),
+                new PurpleMonster(new Random().nextInt((3 * Commons.BOARD_WIDTH) / 4), new Random().nextInt((3 * Commons.BOARD_HEIGHT) / 4)),
+                new RedMonster(new Random().nextInt((3 * Commons.BOARD_WIDTH) / 4), new Random().nextInt((3 * Commons.BOARD_HEIGHT) / 4))
         ));
         badSprites.addAll(monsterSprites);
     }
@@ -82,7 +81,7 @@ public class FreezeMonstersBoard extends AbstractBoard {
 
     @Override
     protected void setBackgroundColor(Graphics2D g) {
-        g.setColor(new Color(50,205,50));
+        g.setColor(new Color(36, 113, 36));
         g.fillRect(0, 0, d.width, d.height);
     }
 
@@ -131,13 +130,13 @@ public class FreezeMonstersBoard extends AbstractBoard {
                 goop.setY(monster.getY());
             }
             if (players.get(0).isVisible() && !goop.isDestroyed()) {
-                if (UtilCommons.checkContact(goop, this.players.get(0))) {
+                if (UtilCommons.checkCollision(goop, this.players.get(0))) {
                     players.get(0).setDying(true);
                     goop.setDestroyed(true);
                 }
             }
             if (!goop.isDestroyed()) {
-                if (shot.isVisible() && UtilCommons.checkContact(goop, shot)) {
+                if (shot.isVisible() && UtilCommons.checkCollision(goop, shot)) {
                     goop.setDestroyed(true);
                     shot.setShotDirection(null);
                     shot.die();
@@ -151,28 +150,28 @@ public class FreezeMonstersBoard extends AbstractBoard {
                             goop.setGoopDirection(null);
                             goop.setDestroyed(true);
                         } else {
-                            goop.setY(goop.getY() + 1);
+                            goop.setY(goop.getY() + Commons.SHOT_SPEED);
                         }
                     } else if (goop.getGoopDirection().equals(MoveDirection.TOP)) {
                         if (goop.getY() < 0) {
                             goop.setGoopDirection(null);
                             goop.setDestroyed(true);
                         } else {
-                            goop.setY(goop.getY() - 1);
+                            goop.setY(goop.getY() - Commons.SHOT_SPEED);
                         }
                     } else if (goop.getGoopDirection().equals(MoveDirection.LEFT)) {
                         if (goop.getX() < 0) {
                             goop.setGoopDirection(null);
                             goop.setDestroyed(true);
                         } else {
-                            goop.setX(goop.getX() - 1);
+                            goop.setX(goop.getX() - Commons.SHOT_SPEED);
                         }
                     } else if (goop.getGoopDirection().equals(MoveDirection.RIGHT)) {
                         if (goop.getX() >= Commons.BOARD_WIDTH) {
                             goop.setGoopDirection(null);
                             goop.setDestroyed(true);
                         } else {
-                            goop.setX(goop.getX() + 1);
+                            goop.setX(goop.getX() + Commons.SHOT_SPEED);
                         }
                     }
                 }
@@ -181,13 +180,13 @@ public class FreezeMonstersBoard extends AbstractBoard {
     }
 
     private void moveTo(MonsterSprite monster, MoveDirection randomDirection) {
-        if (randomDirection.equals(MoveDirection.BOTTOM)) {
+        if (randomDirection.equals(MoveDirection.BOTTOM) && (monster.getY() + monster.getMonsterHeight() * 2) < Commons.BOARD_HEIGHT) {
             monster.moveY(1);
-        } else if (randomDirection.equals(MoveDirection.TOP)) {
+        } else if (randomDirection.equals(MoveDirection.TOP) && monster.getY() > 0) {
             monster.moveY(-1);
-        } else if (randomDirection.equals(MoveDirection.LEFT)) {
+        } else if (randomDirection.equals(MoveDirection.LEFT) && monster.getX() > 0) {
             monster.moveX(-1);
-        } else if (randomDirection.equals(MoveDirection.RIGHT)) {
+        } else if (randomDirection.equals(MoveDirection.RIGHT) && (monster.getX() + monster.getMonsterWidth() * 2) < Commons.BOARD_WIDTH) {
             monster.moveX(1);
         }
     }
@@ -196,7 +195,7 @@ public class FreezeMonstersBoard extends AbstractBoard {
         if (shot.isVisible()) {
             for (MonsterSprite monster : monsterSprites) {
                 if (monster.isVisible() && shot.isVisible()) {
-                    if (UtilCommons.checkContact(shot, monster)) {
+                    if (UtilCommons.checkCollision(shot, monster)) {
                         if (!monster.isFreezed()) {
                             freezes++;
                             new DeathState(monster);
@@ -213,7 +212,7 @@ public class FreezeMonstersBoard extends AbstractBoard {
             }
 
             if (shot.getShotDirection() != null && (shot.getShotDirection().equals(MoveDirection.TOP) || shot.getShotDirection().equals(MoveDirection.BOTTOM))) {
-                if (shot.getY() > 0 && shot.getY() < Commons.BOARD_HEIGHT) {
+                if (!UtilCommons.outOfBoard(shot)) {
                     if (shot.getShotDirection().equals(MoveDirection.TOP)) {
                         shot.setY(shot.getY() - 4);
                     } else {
@@ -224,7 +223,7 @@ public class FreezeMonstersBoard extends AbstractBoard {
                     shot.die();
                 }
             } else if (shot.getShotDirection() != null && (shot.getShotDirection().equals(MoveDirection.LEFT) || shot.getShotDirection().equals(MoveDirection.RIGHT))) {
-                if (shot.getX() > 0 && shot.getX() < Commons.BOARD_WIDTH) {
+                if (!UtilCommons.outOfBoard(shot)) {
                     if (shot.getShotDirection().equals(MoveDirection.LEFT)) {
                         shot.setX(shot.getX() - 4);
                     } else if (shot.getShotDirection().equals(MoveDirection.RIGHT)) {

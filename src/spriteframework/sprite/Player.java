@@ -16,8 +16,10 @@ public abstract class Player extends Sprite {
 
     private Command moveCommand;
 
-    public Player(Direction moveDirection) {
+    public Player(Direction moveDirection, int x, int y) {
         this.moveDirection = moveDirection;
+        this.x = x;
+        this.y = y;
         initPlayer();
     }
 
@@ -30,11 +32,8 @@ public abstract class Player extends Sprite {
         width = playerImg.getWidth(null);
         setImage(playerImg);
 
-        int START_X = 270;
-        setX(START_X);
-
-        int START_Y = 280;
-        setY(START_Y);
+        setX(x);
+        setY(y);
     }
 
     public void act() {
@@ -99,16 +98,8 @@ public abstract class Player extends Sprite {
         return width;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
     public Direction getMoveDirection() {
         return moveDirection;
-    }
-
-    public void setMoveDirection(Direction moveDirection) {
-        this.moveDirection = moveDirection;
     }
 
     public MoveDirection getPlayerDirection() {

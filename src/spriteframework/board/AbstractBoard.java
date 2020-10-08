@@ -27,16 +27,8 @@ import java.util.LinkedList;
 public abstract class AbstractBoard extends JPanel {
 
     protected Dimension d;
-
-    //define sprites
-    protected LinkedList<Player> players = new LinkedList<Player>();
-
+    protected LinkedList<Player> players = new LinkedList();
     protected LinkedList<BadSprite> badSprites;
-
-    protected Shot shot;
-
-    private int direction = -1;
-    private int deaths = 0;
 
     protected int numberPlayers;
     protected boolean inGame = true;
@@ -128,7 +120,7 @@ public abstract class AbstractBoard extends JPanel {
         doDrawing(g);
     }
 
-    private void doDrawing(Graphics g1) { // Template Method
+    private void doDrawing(Graphics g1) {
         Graphics2D g = (Graphics2D) g1;
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
@@ -178,13 +170,10 @@ public abstract class AbstractBoard extends JPanel {
                 Commons.BOARD_WIDTH / 2);
     }
 
-
     private void doGameCycle() {
-
         update();
         repaint();
     }
-
 
     public class GameCycle implements ActionListener {
 
@@ -208,7 +197,7 @@ public abstract class AbstractBoard extends JPanel {
             for (Player player : players) {
                 player.keyPressed(e);
 
-                processOtherSprites(player, e); // hotspot
+                processOtherSprites(player, e);
             }
         }
     }

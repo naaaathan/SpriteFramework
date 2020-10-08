@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class Spaceship extends Player {
     public Spaceship() {
-        super(Direction.HORIZONTAL);
+        super(Direction.HORIZONTAL, 270, 280);
     }
 
     @Override

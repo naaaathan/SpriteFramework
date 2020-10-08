@@ -1,5 +1,6 @@
 package freezemonster.sprites;
 
+import spriteframework.utils.Commons;
 import spriteframework.utils.Direction;
 import spriteframework.sprite.Player;
 import spriteframework.utils.UtilCommons;
@@ -10,7 +11,7 @@ import java.awt.*;
 public class Woody extends Player {
 
     public Woody() {
-        super(Direction.BOTH);
+        super(Direction.BOTH, Commons.BOARD_WIDTH / 4, Commons.BOARD_HEIGHT / 4);
     }
 
     @Override

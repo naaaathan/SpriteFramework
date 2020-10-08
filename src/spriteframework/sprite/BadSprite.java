@@ -15,8 +15,5 @@ public abstract class BadSprite extends Sprite {
         //
     }
 
-    public void init() {
-
-    }
 }
 

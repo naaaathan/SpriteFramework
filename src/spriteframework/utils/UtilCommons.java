@@ -20,15 +20,17 @@ public class UtilCommons {
         return resizedImg;
     }
 
-    public static int randomByInterval(int x, int size) {
-        return new Random().nextInt(size) + (x - size);
-    }
-
     public static MoveDirection randomDirection()  {
         return MoveDirection.class.getEnumConstants()[new Random().nextInt(MoveDirection.class.getEnumConstants().length)];
     }
 
-    public static Boolean checkContact(Sprite sprite1, Sprite sprite2) {
+    public static Boolean outOfBoard(Sprite sprite) {
+        Rectangle bounds = sprite.getBounds();
+        return !(new Rectangle((int)bounds.getWidth(), (int)bounds.getHeight(),
+                Commons.BOARD_WIDTH - (int)bounds.getWidth() * 2, Commons.BOARD_HEIGHT - (int)bounds.getHeight() * 3).intersects(sprite.getBounds()));
+    }
+
+    public static Boolean checkCollision(Sprite sprite1, Sprite sprite2) {
         return sprite1.getBounds().intersects(sprite2.getBounds());
     }
 }

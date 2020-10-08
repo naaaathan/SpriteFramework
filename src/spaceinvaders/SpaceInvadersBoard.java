@@ -23,29 +23,22 @@ import java.util.Random;
 
 public class SpaceInvadersBoard extends AbstractBoard {
 
-    //define sprites
-    private List<BadSprite> aliens;
     private Shot shot;
-
-    // define global control vars
     private int direction = -1;
     private int deaths = 0;
-
-
-    private String explImg = "spaceinvaders/spaceinvaders/images/explosion.png";
+    private final String explImg = "src/spaceinvaders/images/explosion.png";
 
     @Override
     public void gameInit() {
-        // TODO REFACTOR GAME INIT
         addPlayer(new Spaceship());
         numberPlayers = 1;
-        badSprites = new LinkedList<BadSprite>();
+        badSprites = new LinkedList();
         createBadSprites();
         createOtherSprites();
         shot = new ShotAlien();
     }
 
-    protected void createBadSprites() {  // create sprites
+    protected void createBadSprites() {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 6; j++) {
                 BomberSprite alien = new BomberSprite(Commons.ALIEN_INIT_X + 18 * j,
@@ -67,14 +60,11 @@ public class SpaceInvadersBoard extends AbstractBoard {
         }
     }
 
-    // Override
     protected void drawOtherSprites(Graphics g) {
         drawShot(g);
     }
 
     protected void processOtherSprites(Player player, KeyEvent e) {
-        /* TODO improve this */
-
         int x = player.getX();
         int y = player.getY();
         int key = e.getKeyCode();
@@ -104,16 +94,14 @@ public class SpaceInvadersBoard extends AbstractBoard {
             message = "Game won!";
         }
 
-        // player
         for (Player player : players) {
             player.act();
         }
 
-        // shot
         if (shot.isVisible()) {
             for (BadSprite alien : badSprites) {
                 if (alien.isVisible() && shot.isVisible()) {
-                    if (UtilCommons.checkContact(shot, alien)) {
+                    if (UtilCommons.checkCollision(shot, alien)) {
                         ImageIcon ii = new ImageIcon(explImg);
                         alien.setImage(ii.getImage());
                         new DeathState(alien);
@@ -132,8 +120,6 @@ public class SpaceInvadersBoard extends AbstractBoard {
                 shot.setY(y);
             }
         }
-
-        // aliens
 
         for (BadSprite alien : badSprites) {
 
@@ -184,8 +170,6 @@ public class SpaceInvadersBoard extends AbstractBoard {
             }
         }
 
-        // bombs
-
         updateOtherSprites();
     }
 
@@ -204,7 +188,7 @@ public class SpaceInvadersBoard extends AbstractBoard {
                 bomb.setY(alien.getY());
             }
             if (players.get(0).isVisible() && !bomb.isDestroyed()) {
-                if (UtilCommons.checkContact(bomb, players.get(0))) {
+                if (UtilCommons.checkCollision(bomb, players.get(0))) {
                     ImageIcon ii = new ImageIcon(explImg);
                     players.get(0).setImage(ii.getImage());
                     players.get(0).setDying(true);
