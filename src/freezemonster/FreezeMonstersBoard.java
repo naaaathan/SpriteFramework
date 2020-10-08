@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class FreezeMonstersBoard extends AbstractBoard {
 
@@ -29,10 +30,14 @@ public class FreezeMonstersBoard extends AbstractBoard {
     @Override
     protected void createBadSprites() {
         monsterSprites = new LinkedList(Arrays.asList(
-                new BlueMonster(new Random().nextInt((3 * Commons.BOARD_WIDTH) / 4), new Random().nextInt((3 * Commons.BOARD_HEIGHT) / 4)),
-                new CyanMonster(new Random().nextInt((3 * Commons.BOARD_WIDTH) / 4), new Random().nextInt((3 * Commons.BOARD_HEIGHT) / 4)),
-                new PurpleMonster(new Random().nextInt((3 * Commons.BOARD_WIDTH) / 4), new Random().nextInt((3 * Commons.BOARD_HEIGHT) / 4)),
-                new RedMonster(new Random().nextInt((3 * Commons.BOARD_WIDTH) / 4), new Random().nextInt((3 * Commons.BOARD_HEIGHT) / 4))
+                new BlueMonster(ThreadLocalRandom.current().nextInt(Commons.BOARD_WIDTH / 2, Commons.BOARD_WIDTH - 50)
+                        , ThreadLocalRandom.current().nextInt(0, Commons.BOARD_HEIGHT - 50)),
+                new CyanMonster(ThreadLocalRandom.current().nextInt(Commons.BOARD_WIDTH / 2, Commons.BOARD_WIDTH - 50)
+                        , ThreadLocalRandom.current().nextInt(0, Commons.BOARD_HEIGHT - 50)),
+                new PurpleMonster(ThreadLocalRandom.current().nextInt(Commons.BOARD_WIDTH / 2, Commons.BOARD_WIDTH - 50)
+                        , ThreadLocalRandom.current().nextInt(0, Commons.BOARD_HEIGHT - 50)),
+                new RedMonster(ThreadLocalRandom.current().nextInt(Commons.BOARD_WIDTH / 2, Commons.BOARD_WIDTH - 50)
+                        , ThreadLocalRandom.current().nextInt(0, Commons.BOARD_HEIGHT - 50))
         ));
         badSprites.addAll(monsterSprites);
     }
